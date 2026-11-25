@@ -7,12 +7,17 @@ Six équipes sont disponibles au démarrage : Shadow Wolves, Pixel Warriors, Cyb
 ## Equipe de travail et choix technique
 
 Dusséaux Thomas et Mathis dumage
+Contraintes choisies: C et D
 
-Pour réaliser les modifications demandées nous choisissons de partir sur une architecture hexagonale.
-Elle vise à créer des systèmes à base de composants d'application qui sont faiblement couplés et qui peuvent être facilement connectés à leur environnement logiciel au moyen de ports et d'adaptateurs.
-Ces composants sont modulaires et interchangeables ce qui renforce la cohérence des traitements et facilite l'automatisation des tests
-Car cela permettra d'isoler les règles du tournoi de la technique.
-Ce qui permet de changer le stockage ou le framework et d'utiliser à la fois l'API et la ligne de commande sans modifier ni dupliquer ces règles.
+Nous avons choisi une architecture hexagonale : core/tournament.js porte les opérations et règles du tournoi, et s’appuie sur core/ranking.js pour calculer le classement; storage/memory.js et notification/console.js fournissent respectivement le stockage et la notification, assemblés par container.js.
+
+Ce qui répond à C, car on peut remplacer les technologies du stockage ou du web sans réécrire les règles métier.
+
+Pour D, api.js expose ces opérations en REST, cli.js les expose dans le terminal, et server.js démarre les deux : elles réutilisent donc le même cœur sans dupliquer ses règles.
+
+Enfin, l’injection du notifier rend possible son évolution vers une file asynchrone et persistante pour répondre à B. Mais ce n’est pas encore le cas.
+
+![Schema archi](image-1.png)
 
 ## Prérequis
 
