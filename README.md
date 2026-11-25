@@ -35,6 +35,20 @@ npm start
 
 Le serveur écoute sur `http://localhost:3000`. Utiliser `Ctrl+C` pour l'arrêter.
 
+## Utiliser la CLI
+
+La CLI démarre avec le serveur via `npm start`. Saisir une commande par ligne :
+
+```text
+teams
+matches
+ranking
+create 1 6
+result 4 3 1
+```
+
+`create` prend deux identifiants d'équipe ; `result` prend l'identifiant du match et les deux scores. L'enregistrement du résultat affiche la notification après environ trois secondes.
+
 ## Routes
 
 Les corps des requêtes POST utilisent `Content-Type: application/json`. Les identifiants et scores sont des nombres entiers JSON, sans guillemets.
