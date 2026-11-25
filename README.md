@@ -6,7 +6,7 @@ Six équipes sont disponibles au démarrage : Shadow Wolves, Pixel Warriors, Cyb
 
 ## Equipe de travail et choix technique
 
-Dusséaux Thomas et Mathis dumage
+Dusséaux Thomas (Detzio) et Mathis dumage (MATHOU1111)
 Contraintes choisies: C et D
 
 Nous avons choisi une architecture hexagonale : core/tournament.js porte les opérations et règles du tournoi, et s’appuie sur core/ranking.js pour calculer le classement; storage/memory.js et notification/console.js fournissent respectivement le stockage et la notification, assemblés par container.js.
