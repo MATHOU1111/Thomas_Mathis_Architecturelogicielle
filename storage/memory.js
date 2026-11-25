@@ -9,7 +9,7 @@ async function getMatches() {
 }
 
 async function getMatch(id) {
-  return data.matches.find((entry) => String(entry.id) === id);
+  return data.matches.find((entry) => String(entry.id) === String(id));
 }
 
 async function addMatch(team1Id, team2Id) {
@@ -27,7 +27,8 @@ async function addMatch(team1Id, team2Id) {
 
 async function saveResult(id, scoreTeam1, scoreTeam2) {
   const match = await getMatch(id);
-  if (match.status === 'completed') return null;
+  if (!match || match.status !== 'pending') return null;
+
   match.scoreTeam1 = scoreTeam1;
   match.scoreTeam2 = scoreTeam2;
   match.status = 'completed';
@@ -42,4 +43,6 @@ async function saveRanking(ranking) {
   data.ranking = ranking;
 }
 
-module.exports = { getTeams, getMatches, getMatch, addMatch, saveResult, getRanking, saveRanking };
+module.exports = {
+  getTeams, getMatches, getMatch, addMatch, saveResult, getRanking, saveRanking,
+};
